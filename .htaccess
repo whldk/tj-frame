@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    RewriteCond %{REQUEST_URI} ^/mengoo-test/(upload/|group/|index\.php)
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteRule ^.*$ - [L,END]
+
+    RewriteCond %{REQUEST_URI} ^/mengoo-test/(index\.php\/)?resources\/resource(-folder)?\/upload$ [NC]
+	RewriteRule ^.*$ resources/index.php [L,END]
+
+    RewriteCond %{REQUEST_URI} ^/mengoo-test/(index\.php\/)?UEditor\/UEditor\/index$ [NC]
+	RewriteRule ^.*$ %{REQUEST_SCHEME}/%1/mengoo-test/ueditor/index.php [L,END]
+
+    RewriteCond %{REQUEST_URI} !^/mengoo-test/upload/
+	RewriteRule ^.*$  index.php [L,END]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    #增加如下内容
+    SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+    RewriteRule ^.*$ - [F]
+</IfModule>
+

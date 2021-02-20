@@ -1,0 +1,59 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# vagrant runtime
+/.vagrant
+
+# upload
+/upload/*
+!/upload/upload.txt
+
+# openssl 
+
+
+# log
+*.log
+!/log/swoole.log
+
+# static
+/.static
+
+# test
+/test*.php
+
+# test data
+/test/
+/test*.*
+
+# test data
+/vendor/tokenizer/dict/
+
+# group
+*.group
+/group/*
+
+# excel
+*.xls
+*.xlsx
