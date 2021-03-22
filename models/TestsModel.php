@@ -41,7 +41,7 @@ class TestsModel extends ValidateModel
      * @var array
      */
     protected static $fields = [
-        'id' => null,
+        'id' => null,           //会自动生产hash_id
         'name' => null,
         'school_id' => null,
         'status' => null,
