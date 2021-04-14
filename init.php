@@ -16,7 +16,7 @@ define('ENV_SIDE', 'backend');	//define('ENV_SIDE', 'frontend');
 
 //debug
 define('DEBUG', true);
-define('UN_PWD', false);
+define('UN_PWD', false); //是否加密登录
 
 //strace frames limit
 define('STRACE_LIMIT', 3);
@@ -32,17 +32,15 @@ define('DIR_UPLOAD', __DIR__ . DIRECTORY_SEPARATOR . 'upload');
 define('DIR_GROUP', __DIR__ . DIRECTORY_SEPARATOR . 'group');
 
 //配置系统常量
-define('CONF_HOST', '172.19.204.246'); //172.19.204.246  127.0.0.1
-define('CONF_DB_NAME', 'mengoo_common');	// 选择连接的数据库
+define('CONF_HOST', '127.0.1.1');
+define('CONF_DB_NAME', 'mengoo');	// 选择连接的数据库
 define('CONF_USERNAME', 'root');		// 登录数据库的用户名
-define('CONF_PASSWORD', 'Mengoo@2020');      //Mengoo@2020  123456
-define('CONF_ENABLE_LOG', true);    	// 开启日志记录、开始就会写入文件
+define('CONF_PASSWORD', '123456');
+define('LOG_FILE_SIZE', 5242880);       //5M log file size
+define('CONF_ENABLE_LOG', true);    	// 开启日志记录、开始就会写入文件、超过5M 会自动情况
 define('CONF_SESSION_NAME', 'mengoo-esp');
 define('CONF_SESSION_TIMEOUT', 7200);  // 2个小时存活时间
 define('CONF_IDENT_COOKIE', 'imengoo-esp');
-
-//log file size
-define('LOG_FILE_SIZE', 5242880); //5M
 
 //error handling
 if (defined('DEBUG') && DEBUG === true) {
@@ -67,8 +65,8 @@ if (defined('AGENT') && AGENT === 'http' && defined('ENV') && ENV === 'dev') {
 		$log_file = $log_dir . DIRECTORY_SEPARATOR . AGENT . '_error.log';
 		if (!is_file($log_file)) {
 			touch($log_file);
-// 		} elseif (filesize($log_file) > LOG_FILE_SIZE) {
-// 			file_put_contents($log_file, '');
+ 		} elseif (filesize($log_file) > LOG_FILE_SIZE) {
+ 			file_put_contents($log_file, '');
 		}
 		ini_set('error_log', $log_file);
 	}
